@@ -1,18 +1,19 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+# Local .terraform directories
+**/.terraform
 
-# Other files and folders
-.settings/
+# .tfstate files
+*.tfstate
+*.tfstate.*
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+# Crash log files
+crash.log
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# Exclude all .tfvars files, which are likely to contain sentitive data, such as
+# password, private keys, and other secrets. These should not be part of version 
+# control as they are data points which are potentially sensitive and subject 
+# to change depending on the environment.
+#
+#*.tfvars
+
+# lock info
+*.terraform.lock.hcl
