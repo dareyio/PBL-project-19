@@ -1,0 +1,6 @@
+---
+# handlers file for tooling
+- name: Restart php-fpm
+  ansible.builtin.service:
+    name: php-fpm
+    state: restarted

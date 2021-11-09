@@ -1,0 +1,32 @@
+---
+# tasks file for jenkins
+- name: import repository key from jenkins
+  ansible.builtin.rpm_key:
+    state: present
+    key: http://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+
+- name: add the repository key to repos list
+  ansible.builtin.get_url:
+    url:  http://pkg.jenkins.io/redhat-stable/jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
+    mode: 0755
+
+- name: install jenkins
+  ansible.builtin.yum:
+    name: jenkins
+    state: present
+
+- name: start and enable jenkins
+  ansible.builtin.service:
+    name: jenkins
+    state: started
+    enabled: yes
+    
+- name: Administrator password
+  command: cat /var/lib/jenkins/secrets/initialAdminPassword
+  register: result
+
+- name: print ansible password
+  debug:
+    msg: "{{ result.stdout }}"

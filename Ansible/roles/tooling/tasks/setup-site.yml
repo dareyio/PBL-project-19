@@ -1,0 +1,29 @@
+- name: Clone the repository
+  ansible.builtin.git:
+   repo: https://github.com/Livingstone95/tooling-1.git
+   clone: yes
+   dest: /home/ec2-user/
+
+- name: create html directory
+  ansible.builtin.file:
+    path: /var/www/html 
+    state: directory
+    follow: yes
+    
+- name: copy the html from tooling to /var/www/html
+  ansible.builtin.copy:
+    src: /home/ec2-user/tooling-1/html/.
+    dest: /var/www/html/
+    mode: '0755'
+    remote_src: yes
+
+- name: create healthstatus file
+  ansible.builtin.file:
+    path: /var/www/html/healthstatus
+    state: touch
+
+
+#useful when the remote host is RHEL/Centos
+- name: allowed the directory to be served as http content
+  command: chcon -t httpd_sys_rw_content_t /var/www/html/ -R
+

@@ -1,0 +1,36 @@
+
+- name: get RDS endpoints
+  command: > 
+     aws rds describe-db-cluster-endpoints \
+       --db-cluster-identifier daviddb
+  register: rds_endpoint
+
+- name: print rds endpoint
+  debug:
+    msg: "{{ rds_endpoint.stdout | from_json | json_query('Endpoint[0]')}}" 
+
+
+- name: create database
+  community.mysql.mysql_db:
+    login_host: "{{ rds_endpoint.stdout | from_json | json_query('Endpoint[0]')}}" 
+    login_user: "{{ admin_username }}"
+    login_password: "{{ admin_pswd }}"
+    name: toolingdb
+    collation: utf8_general_ci
+    encoding: utf8
+    state: present
+
+
+- name: Input tooling credentials
+  ansible.builtin.lineinfile:
+    path: /var/www/html/functions.php
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  loop:
+    - { regexp: '^mysql.tooling.svc.cluster.local', line: "{{ rds_endpoint.stdout | from_json | json_query('Endpoint[0]')}}" }
+    - { regexp: '^admin', line: "tooling" }
+    - { regexp: '^tooling', line: "toolingdb" }
+    - { regexp: '^admin', line: "t00l!n#" }
+
+
+

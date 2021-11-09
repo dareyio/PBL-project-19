@@ -1,0 +1,30 @@
+- name: Download wordpress compressed file
+  ansible.builtin.get_url:
+    url: http://wordpress.org/latest.tar.gz
+    dest: /home/ec2-user/
+    
+
+- name: unzip the compressed file
+  ansible.builtin.unarchive:
+    src: latest.tar.gz
+    dest: /home/ec2-user/
+    remote_src: yes
+
+- name: Copy config.php
+  ansible.builtin.copy:
+    src: /home/ec2-user/wordpress/wp-config-sample.php
+    dest: /home/ec2-user/wordpress/wp-config.php
+    force: yes
+    remote_src: yes
+
+- name: deploy the code
+  ansible.builtin.copy:
+    src: /home/ec2-user/wordpress/.
+    dest: /var/www/html/
+    force: yes
+    remote_src: yes
+
+#useful when the remote host is RHEL/Centos, if not comment it out
+- name: allowed the directory to be served as http content
+  command: chcon -t httpd_sys_rw_content_t /var/www/html/ -R
+
