@@ -32,7 +32,8 @@ https://www.terraform.io/docs/cli/commands/graph.html
 ### Action Plan for project 19
 
 - Build images using packer
-- update terrafrom scrip with new ami ids
+- create terraform cloud and backend
+- update terrafrom script with new ami ids
 - run terraform script
 - update ansible script with values from teraform output
 - run ansible script
