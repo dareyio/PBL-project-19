@@ -1,5 +1,5 @@
 ---
-- hosts: tag_Name_dACS_nginx
+- hosts: tag_Name_ACS_nginx
 - name: nginx assignment
   import_playbook: ../static-assignments/nginx.yml
 

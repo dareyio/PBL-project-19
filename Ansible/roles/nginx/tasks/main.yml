@@ -12,44 +12,12 @@
      state: started 
      enabled: yes
 
-<<<<<<< HEAD
-- name: Backup nginx default config file
-=======
-- name: install PHP
-  ansible.builtin.yum:
-    name:
-      - php 
-      - php-mysqlnd
-      - php-gd 
-      - php-curl
-      - php-common
-      - php-fpm
-      - php-mbstring
-      - php-opcache 
-      - php-xml
-      - php-intl 
-      - php-json
-    state: present
-
-- name: ensure php-fpm is started and enabled
-  ansible.builtin.service:
-     name: php-fpm
-     state: reloaded
-     enabled: yes
-  notify: Restart php-fpm
-  
 - name: rename the defualt configurarion file
->>>>>>> 5858f4efef95e909950575655fd68bcc6d00e1ed
   ansible.builtin.copy:
     src: /etc/nginx/nginx.conf 
     dest: /etc/nginx/nginx.conf-distro
     mode: '0755'
     remote_src: yes
-
-- name: remove default nginx file
-  ansible.builtin.file: 
-    path: /etc/nginx/nginx.conf 
-    state: absent
 
 - name: create new nginx file
   ansible.builtin.file: 
