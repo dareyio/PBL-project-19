@@ -35,5 +35,5 @@
     target: /var/www/html/
     ignore_selinux_state: yes
     setype: httpd_sys_content_t
-
+  notify: Restart httpd
 
