@@ -140,7 +140,7 @@ resource "aws_lb_listener" "web-listener" {
 # listener rule for tooling target
 
 resource "aws_lb_listener_rule" "tooling-listener" {
-  listener_arn = aws_lb_listener.web-listener.arn
+  listener_arn = aws_ldb_listener.web-listener.arn
   priority     = 99
 
   action {
