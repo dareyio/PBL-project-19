@@ -113,6 +113,6 @@ module "compute" {
   ami-sonar       = var.ami-sonar
   ami-jfrog       = var.ami-bastion
   subnets-compute = module.VPC.public_subnets-1
-  sg-compute      = [module.security.ALB-sg]
+  sg-compute      = [module.security.compute-sg]
   keypair         = var.keypair
 }
