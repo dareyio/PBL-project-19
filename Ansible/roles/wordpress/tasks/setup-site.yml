@@ -24,7 +24,9 @@
     force: yes
     remote_src: yes
 
-#useful when the remote host is RHEL/Centos, if not comment it out
-- name: allowed the directory to be served as http content
-  command: chcon -t httpd_sys_rw_content_t /var/www/html/ -R
+- name: Allow apache to modify /var/www/html
+  community.general.sefcontext:
+    target: /var/www/html/
+    ignore_selinux_state: yes
+    setype: httpd_sys_content_t
 

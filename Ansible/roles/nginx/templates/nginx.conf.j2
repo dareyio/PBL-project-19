@@ -39,12 +39,13 @@ http {
         server_name  *.oyindamola.gq;
         
         
+     
+        
         ssl_certificate /etc/ssl/certs/ACS.crt;
         ssl_certificate_key /etc/ssl/private/ACS.key;
         ssl_dhparam /etc/ssl/certs/dhparam.pem;
 
       
-
         location /healthstatus {
         access_log off;
         return 200;

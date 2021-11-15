@@ -1,20 +1,13 @@
-
-- name: get RDS endpoints
-  command: > 
-     aws rds describe-db-cluster-endpoints \
-       --db-cluster-identifier daviddb
-  register: rds_endpoint
-
-- name: print rds endpoint
-  debug:
-    msg: "{{ rds_endpoint.stdout | from_json | json_query('Endpoint[0]')}}" 
-
-
+- name: Install PyMySQL
+  pip:
+    name: pymysql
+    state: present
+    
 - name: create database
   community.mysql.mysql_db:
-    login_host: "{{ rds_endpoint.stdout | from_json | json_query('Endpoint[0]')}}" 
-    login_user: "{{ admin_username }}"
-    login_password: "{{ admin_pswd }}"
+    login_host: "terraform-2021111211063265400000000c.crrh6ajas8hr.us-east-1.rds.amazonaws.com"
+    login_user: "david"
+    login_password: "devopspblproject"
     name: toolingdb
     collation: utf8_general_ci
     encoding: utf8
@@ -27,10 +20,9 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
   loop:
-    - { regexp: '^mysql.tooling.svc.cluster.local', line: "{{ rds_endpoint.stdout | from_json | json_query('Endpoint[0]')}}" }
+    - { regexp: '^mysql.tooling.svc.cluster.local', line: "terraform-2021111211063265400000000c.crrh6ajas8hr.us-east-1.rds.amazonaws.com" }
     - { regexp: '^admin', line: "tooling" }
     - { regexp: '^tooling', line: "toolingdb" }
     - { regexp: '^admin', line: "t00l!n#" }
-
 
 

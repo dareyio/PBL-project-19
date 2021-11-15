@@ -1,31 +1,12 @@
 ---
-# tasks file for tooling
-
-# - name: mounting share(s)
-#   mount:
-#     path: "{{ item.dir }}"
-#     src: "{{ item.fs_id }}"
-#     fstype: efs
-#     opts: nosuid,noexec,defaults,tls,accesspoint=fsap-029f128912cbada9f
-#     state: mounted
-#   loop:
-#     - { dir: '/var/www/', fs_id: 'fs-1b73901d:/' }
-
-
 - name: mounting share
-  command: mount -t efs -o tls,accesspoint=fsap-01c13a4019ca59dbe fs-8b501d3f:/ /var/www/
+  command: sudo mount -t efs -o tls,accesspoint=fsap-06a770f110ead9e3f fs-01d51a09393ef8846:/ /var/www
 
 - name: install httpd on the webserver
   ansible.builtin.yum:
     enablerepo: "BaseOS,AppStream"
     name: "httpd"
     state: present
-
-- name: ensure httpd is started and enabled
-  ansible.builtin.service:
-     name: httpd 
-     state: started 
-     enabled: yes
 
 - name: install PHP
   ansible.builtin.yum:
@@ -50,13 +31,15 @@
      enabled: yes
   notify: Restart php-fpm
 
+- import_tasks: setup-db.yml
 
 - import_tasks: setup-site.yml
 
-- import_tasks: setup-db.yml
-
-
-
+- name: ensure httpd is started and enabled
+  ansible.builtin.service:
+     name: httpd 
+     state: started 
+     enabled: yes
 
 
 

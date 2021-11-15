@@ -1,13 +1,6 @@
 ---
 # handlers file for nginx
-<<<<<<< HEAD
 - name: Restart nginx
   ansible.builtin.service:
     name: nginx
     state: restarted
-=======
-- name: Restart php-fpm
-  ansible.builtin.service:
-    name: php-fpm
-    state: restarted
->>>>>>> 5858f4efef95e909950575655fd68bcc6d00e1ed
