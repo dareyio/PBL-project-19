@@ -4,11 +4,11 @@
    clone: yes
    dest: /home/ec2-user/tooling
 
-- name: create html directory
-  ansible.builtin.file:
-    path: /var/www/html 
-    state: directory
-    follow: yes
+# - name: create html directory
+#   ansible.builtin.file:
+#     path: /var/www/html 
+#     state: directory
+#     follow: yes
     
 - name: copy the html from tooling to /var/www/html
   ansible.builtin.copy:

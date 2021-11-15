@@ -2,4 +2,4 @@
 - hosts: tag_Name_ACS_artifactory
   become: true
   roles:
-     - Artifactory
+     - artifactory

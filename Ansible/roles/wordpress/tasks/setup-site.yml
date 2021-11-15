@@ -1,7 +1,7 @@
 - name: Download wordpress compressed file
   ansible.builtin.get_url:
     url: http://wordpress.org/latest.tar.gz
-    dest: /home/ec2-user/
+    dest: /home/ec2-user/latest.tar.gz
     
 
 - name: unzip the compressed file
@@ -24,9 +24,16 @@
     force: yes
     remote_src: yes
 
+- name: create healthstatus file
+  ansible.builtin.file:
+    path: /var/www/html/healthstatus
+    state: touch
+
+
 - name: Allow apache to modify /var/www/html
   community.general.sefcontext:
     target: /var/www/html/
     ignore_selinux_state: yes
     setype: httpd_sys_content_t
+
 

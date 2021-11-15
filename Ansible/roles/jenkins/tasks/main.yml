@@ -24,9 +24,9 @@
     enabled: yes
     
 - name: Administrator password
-  command: cat /var/lib/jenkins/secrets/initialAdminPassword
+  command: sudo cat /var/lib/jenkins/secrets/initialAdminPassword
   register: result
 
-- name: print ansible password
+- name: print Jenkins password
   debug:
     msg: "{{ result.stdout }}"

@@ -16,6 +16,7 @@
   import_playbook: ../static-assignments/jenkins.yml  
 
 - hosts: tag_Name_ACS_sonarqube
+  user: ubuntu
 - name: sonarqube assignment
   import_playbook: ../static-assignments/sonar.yml
 

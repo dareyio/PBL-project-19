@@ -1,12 +1,25 @@
 ---
-- name: mounting share
-  command: sudo mount -t efs -o tls,accesspoint=fsap-06a770f110ead9e3f fs-01d51a09393ef8846:/ /var/www
+# - name: mounting share
+#   command: sudo mount -t efs -o tls,accesspoint=fsap-0414fe041324e0c60 fs-02587f9cf2a598281:/ /var/www
+
+- name: mounting share(s)
+  mount:
+    path: /var/www
+    src: fs-02587f9cf2a598281:/
+    fstype: efs
+    opts: nosuid,noexec,defaults,tls,accesspoint=fsap-0414fe041324e0c60
+    state: mounted
 
 - name: install httpd on the webserver
   ansible.builtin.yum:
     enablerepo: "BaseOS,AppStream"
     name: "httpd"
     state: present
+
+- name: install mod_ssl on the webserver
+  ansible.builtin.yum:
+    name: "mod_ssl"
+    state: present 
 
 - name: install PHP
   ansible.builtin.yum:
@@ -31,9 +44,9 @@
      enabled: yes
   notify: Restart php-fpm
 
-- import_tasks: setup-db.yml
-
 - import_tasks: setup-site.yml
+
+- import_tasks: setup-db.yml
 
 - name: ensure httpd is started and enabled
   ansible.builtin.service:

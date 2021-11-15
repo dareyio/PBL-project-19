@@ -36,7 +36,7 @@ http {
         listen       443 http2 ssl;
         listen       [::]:443 http2 ssl;
         root          /var/www/html;
-        server_name  *.oyindamola.gq;
+        server_name  *.david.toolingabby.com;
         
         
      
@@ -54,7 +54,7 @@ http {
          
         location / {
             proxy_set_header             Host $host;
-            proxy_pass                   https://internal-ACS-int-ALB-869121596.us-east-1.elb.amazonaws.com/; 
+            proxy_pass                   https://internal-ialb-506677692.us-east-1.elb.amazonaws.com/; 
            }
     }
 }

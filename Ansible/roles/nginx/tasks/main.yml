@@ -12,6 +12,12 @@
      state: started 
      enabled: yes
 
+- name: create html directory
+  ansible.builtin.file:
+    path: /var/www/html 
+    state: directory
+    follow: yes
+
 - name: rename the defualt configurarion file
   ansible.builtin.copy:
     src: /etc/nginx/nginx.conf 
