@@ -23,10 +23,3 @@
     state: started
     enabled: yes
     
-- name: Administrator password
-  command: sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-  register: result
-
-- name: print Jenkins password
-  debug:
-    msg: "{{ result.stdout }}"

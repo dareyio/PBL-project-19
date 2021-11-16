@@ -1,13 +1,10 @@
 ---
-# - name: mounting share
-#   command: sudo mount -t efs -o tls,accesspoint=fsap-0414fe041324e0c60 fs-02587f9cf2a598281:/ /var/www
-
 - name: mounting share(s)
   mount:
     path: /var/www
-    src: fs-02587f9cf2a598281:/
+    src: fs-06a94046bc85a62be:/
     fstype: efs
-    opts: nosuid,noexec,defaults,tls,accesspoint=fsap-0414fe041324e0c60
+    opts: nosuid,noexec,defaults,tls,accesspoint=fsap-07c2667e1055ea161
     state: mounted
 
 - name: install httpd on the webserver
