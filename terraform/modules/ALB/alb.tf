@@ -113,7 +113,7 @@ resource "aws_lb_target_group" "tooling-tgt" {
     unhealthy_threshold = 2
   }
 
-  name        = "david-tooling-tgt"
+  name        = "tooling-tgt"
   port        = 443
   protocol    = "HTTPS"
   target_type = "instance"
@@ -137,7 +137,7 @@ resource "aws_lb_listener" "web-listener" {
   }
 }
 
-# listener rule for tooling target
+# # listener rule for tooling target
 
 resource "aws_lb_listener_rule" "tooling-listener" {
   listener_arn = aws_lb_listener.web-listener.arn
