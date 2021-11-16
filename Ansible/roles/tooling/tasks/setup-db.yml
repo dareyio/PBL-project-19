@@ -27,8 +27,8 @@
     replace: "{{ item.line }}"
   loop:
     - { regexp: '^mysql.tooling.svc.cluster.local', line: "terraform-2021111508360949600000000a.cdqpbjkethv0.us-east-1.rds.amazonaws.com" }
-    - { regexp: '^admin', line: "tooling" }
+    - { regexp: '^admin', line: "david" }
     - { regexp: '^tooling', line: "toolingdb" }
-    - { regexp: '^admin', line: "t00l!n#" }
+    - { regexp: '^admin', line: "devopspblproject" }
 
 

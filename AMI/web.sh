@@ -21,7 +21,6 @@ sudo yum install -y rpm-build
 sudo make rpm
 sudo yum install -y  ./build/amazon-efs-utils*rpm
 
-
 #installing java 11
 sudo yum install -y java-11-openjdk-devel
 sudo echo "export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $(which javac)))))" >> ~/.bash_profile

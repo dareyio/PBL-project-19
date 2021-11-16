@@ -32,8 +32,25 @@ https://www.terraform.io/docs/cli/commands/graph.html
 ### Action Plan for project 19
 
 - Build images using packer
-- create terraform cloud and backend
-- update terrafrom script with new ami ids
+- confirm the AMIs in the console
+- update terrafrom script with new ami IDs generated from packer build
+- create terraform cloud account and backend
 - run terraform script
 - update ansible script with values from teraform output
+     - RDS endpoints for wordpress and tooling
+     - Database name, password and username for wordpress and tooling
+     - Access point ID for wordpress and tooling
+     - Internal load balancee DNS for nginx reverse proxy
+
 - run ansible script
+- check the website
+
+
+### Draw back in the scripts
+- Direct hardcoding of values
+- Inputting credentials directly in the script
+
+- Useful links for windows users
+https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement
+https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse
+https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54

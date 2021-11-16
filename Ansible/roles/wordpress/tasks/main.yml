@@ -1,7 +1,4 @@
 ---
-# tasks file for webserver
-# - name: mounting share
-#   command: sudo mount -t efs -o tls,accesspoint=fsap-0b2e706cf837c77a7 fs-02587f9cf2a598281:/ /var/www
 - name: mounting share(s)
   mount:
     path: /var/www
