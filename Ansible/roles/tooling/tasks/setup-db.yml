@@ -5,7 +5,7 @@
     
 - name: create database
   community.mysql.mysql_db:
-    login_host: "terraform-2021111508360949600000000a.cdqpbjkethv0.us-east-1.rds.amazonaws.com"
+    login_host: "terraform-2021111611530321750000000c.cdqpbjkethv0.us-east-1.rds.amazonaws.com"
     login_user: "david"
     login_password: "devopspblproject"
     name: toolingdb
@@ -13,20 +13,13 @@
     encoding: utf8
     state: present
 
-
-- name: Import toolingsb.sqll
-  community.mysql.mysql_db:
-    state: import
-    name: toolingdb
-    target: /home/ec2-user/tooling/html/toolingdb.sql
-
 - name: Input tooling credentials
-  ansible.builtin.replcace:
+  ansible.builtin.replace:
     path: /var/www/html/functions.php
     regexp: "{{ item.regexp }}"
     replace: "{{ item.line }}"
   loop:
-    - { regexp: '^mysql.tooling.svc.cluster.local', line: "terraform-2021111508360949600000000a.cdqpbjkethv0.us-east-1.rds.amazonaws.com" }
+    - { regexp: '^mysql.tooling.svc.cluster.local', line: "terraform-2021111611530321750000000c.cdqpbjkethv0.us-east-1.rds.amazonaws.com" }
     - { regexp: '^admin', line: "david" }
     - { regexp: '^tooling', line: "toolingdb" }
     - { regexp: '^admin', line: "devopspblproject" }
