@@ -18,7 +18,7 @@ resource "aws_db_instance" "ACS-rds" {
   engine                 = "mysql"
   engine_version         = "5.7"
   instance_class         = "db.t2.micro"
-  name                   = "daviddb"
+  name                   = "bennydb"
   username               = var.db-username
   password               = var.db-password
   parameter_group_name   = "default.mysql5.7"

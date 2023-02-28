@@ -15,7 +15,7 @@ terraform {
     organization = "pisitis"
 
     workspaces {
-      name = "Terraform-Cloud-P19"
+      name = "terraform-cloud-codes"
     }
   }
 }
