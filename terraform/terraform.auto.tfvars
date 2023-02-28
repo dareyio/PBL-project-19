@@ -16,24 +16,24 @@ preferred_number_of_private_subnets = 4
 
 environment = "dev"
 #ubuntu is sonar 
-ami-sonar = "ami-04a1383f2a46bdaa5"
+ami-sonar = "ami-0292143ada1ebdaa1"
 
-ami-bastion = "ami-0aa17550cbba02be3"
+ami-bastion = "ami-0d2dc78b159a5ae97"
 
-ami-nginx = "ami-01291bbea1c72459c"
+ami-nginx = "ami-02f8d68458eb1e06a"
 
-ami-web = "ami-0ad2ed2f960d85749"
+ami-web = "ami-047edab2f2e02dc1b"
 
-keypair = "project16"
+keypair = "fubi"
 
 master-password = "bennypbl"
 
 master-username = "benny"
 
-account_no = "032051391204"
+account_no = "370612617815"
 
 tags = {
-  Owner-Email     = "benita201987@gmail.com"
+  Owner-Email     = "bennylove550@gmail.com"
   Managed-By      = "Terraform"
-  Billing-Account = "032051391204"
+  Billing-Account = "370612617815"
 }
