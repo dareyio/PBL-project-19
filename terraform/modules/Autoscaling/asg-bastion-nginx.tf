@@ -11,7 +11,7 @@ resource "aws_sns_topic" "ACS-sns" {
 
 
 # creating notification for all the auto scaling groups
-resource "aws_autoscaling_notification" "david_notifications" {
+resource "aws_autoscaling_notification" "benny_notifications" {
   group_names = [
     aws_autoscaling_group.bastion-asg.name,
     aws_autoscaling_group.nginx-asg.name,

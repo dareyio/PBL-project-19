@@ -15,25 +15,25 @@ preferred_number_of_public_subnets = 2
 preferred_number_of_private_subnets = 4
 
 environment = "dev"
+#ubuntu is sonar 
+ami-sonar = "ami-0292143ada1ebdaa1"
 
-ami-web = "ami-00a45107f7c3455a5"
+ami-bastion = "ami-0d2dc78b159a5ae97"
 
-ami-bastion = "ami-0dbc99375eba56ff4"
+ami-nginx = "ami-02f8d68458eb1e06a"
 
-ami-nginx = "ami-010bd88cc8f5997f3"
+ami-web = "ami-047edab2f2e02dc1b"
 
-ami-sonar = "ami-0f8bd95a744e074b8"
+keypair = "fubi"
 
-keypair = "devops"
+master-password = "bennypbl"
 
-master-password = "devopspblproject"
+master-username = "benny"
 
-master-username = "david"
-
-account_no = "696742900004"
+account_no = "370612617815"
 
 tags = {
-  Owner-Email     = "infradev-segun@darey.io"
+  Owner-Email     = "bennylove550@gmail.com"
   Managed-By      = "Terraform"
-  Billing-Account = "1234567890"
+  Billing-Account = "370612617815"
 }

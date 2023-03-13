@@ -150,7 +150,7 @@ resource "aws_lb_listener_rule" "tooling-listener" {
 
   condition {
     host_header {
-      values = ["tooling.david.toolingabby.com"]
+      values = ["tooling.bossladyb.online"]
     }
   }
 }
